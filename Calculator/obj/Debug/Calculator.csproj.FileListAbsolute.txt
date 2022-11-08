@@ -1,0 +1,1 @@
+C:\My workspace\Etude\S3\C#\ws\Calculator\Calculator\bin\Debug\Calculator.exe.config
