@@ -42,6 +42,7 @@
             this.btn1 = new System.Windows.Forms.Button();
             this.btn6 = new System.Windows.Forms.Button();
             this.btn4 = new System.Windows.Forms.Button();
+            this.eqbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox
@@ -120,6 +121,7 @@
             this.subbtn.TabIndex = 7;
             this.subbtn.Text = "-";
             this.subbtn.UseVisualStyleBackColor = true;
+            this.subbtn.Click += new System.EventHandler(this.subbtn_Click);
             // 
             // btn0
             // 
@@ -139,6 +141,7 @@
             this.multipbtn.TabIndex = 9;
             this.multipbtn.Text = "X";
             this.multipbtn.UseVisualStyleBackColor = true;
+            this.multipbtn.Click += new System.EventHandler(this.multipbtn_Click);
             // 
             // plusbtn
             // 
@@ -180,11 +183,22 @@
             this.btn4.UseVisualStyleBackColor = true;
             this.btn4.Click += new System.EventHandler(this.btn4_Click);
             // 
+            // eqbtn
+            // 
+            this.eqbtn.Location = new System.Drawing.Point(288, 325);
+            this.eqbtn.Name = "eqbtn";
+            this.eqbtn.Size = new System.Drawing.Size(75, 49);
+            this.eqbtn.TabIndex = 14;
+            this.eqbtn.Text = "=";
+            this.eqbtn.UseVisualStyleBackColor = true;
+            this.eqbtn.Click += new System.EventHandler(this.eqbtn_Click);
+            // 
             // Calculatrice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 391);
+            this.Controls.Add(this.eqbtn);
             this.Controls.Add(this.btn4);
             this.Controls.Add(this.btn6);
             this.Controls.Add(this.btn1);
@@ -222,6 +236,7 @@
         private System.Windows.Forms.Button btn1;
         private System.Windows.Forms.Button btn6;
         private System.Windows.Forms.Button btn4;
+        private System.Windows.Forms.Button eqbtn;
 
     }
 }

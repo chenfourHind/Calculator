@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Interfaces_grafiques.views {
     public partial class Calculatrice : Form {
-        private String optext;
+        private String calOperat;
+        private String operation;
 
         public Calculatrice() {
             InitializeComponent();
-            optext = "";
+            calOperat = "";
+            operation = "";
         }
 
         private void label1_Click(object sender, EventArgs e) {
@@ -30,11 +32,48 @@ namespace Interfaces_grafiques.views {
 
         private void bnt_click(Button btn) {
             textBox.Text += btn.Text;
-            optext += btn.Text;
+        }
+
+        private void operationBtn_click() {
+            double oper1;
+            double oper2;
+
+            bool isDouble = Double.TryParse(calOperat, out oper1);
+            Double.TryParse(textBox.Text, out oper2);
+
+            if (operation.Equals("")) {
+
+            }
+
+            else if (operation.Equals("x")) {
+                if (!isDouble) {
+                    oper1 = 1;
+                }
+                oper2 *= oper1;
+            }
+
+            else {
+                if (!isDouble) {
+                    oper1 = 0;
+                }
+
+
+                if (operation.Equals("+")) {
+                    oper2 += oper1;
+                }
+
+                else if (operation.Equals("-")) {
+                    oper2 = oper1 - oper2;
+                }
+            }
+
+            calOperat = oper2.ToString();
         }
 
         private void plusbtn_Click(object sender, EventArgs e) {
-
+            operationBtn_click();
+            textBox.Text = "";
+            operation += "+";
         }
 
         private void btn1_Click(object sender, EventArgs e){
@@ -71,6 +110,24 @@ namespace Interfaces_grafiques.views {
 
         private void btn0_Click(object sender, EventArgs e) {
             bnt_click(btn0);       
+        }
+
+        private void eqbtn_Click(object sender, EventArgs e){
+            operationBtn_click();
+            textBox.Text = calOperat;
+            operation = "";
+        }
+
+        private void subbtn_Click(object sender, EventArgs e){
+            operationBtn_click();
+            textBox.Text = "";
+            operation += "-";
+        }
+
+        private void multipbtn_Click(object sender, EventArgs e) {
+            operationBtn_click();
+            textBox.Text = "";
+            operation += "x";
         }
 
 
