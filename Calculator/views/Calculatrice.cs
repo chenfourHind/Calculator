@@ -12,11 +12,13 @@ namespace Interfaces_grafiques.views {
     public partial class Calculatrice : Form {
         private String calOperat;
         private String operation;
+        private String textOper;
 
         public Calculatrice() {
             InitializeComponent();
             calOperat = "";
             operation = "";
+            textOper = "";
         }
 
         private void label1_Click(object sender, EventArgs e) {
@@ -35,45 +37,44 @@ namespace Interfaces_grafiques.views {
         }
 
         private void operationBtn_click() {
-            double oper1;
-            double oper2;
-
-            bool isDouble = Double.TryParse(calOperat, out oper1);
-            Double.TryParse(textBox.Text, out oper2);
+            int oper1, oper2, r = 0;
+            String operat = calOperat;
+            
+            bool isInt = int.TryParse(operat, out oper1);
+            int.TryParse(textBox.Text, out oper2);
 
             if (operation.Equals("")) {
-
+                r = oper2;
             }
 
             else if (operation.Equals("x")) {
-                if (!isDouble) {
+                if (!isInt) {
                     oper1 = 1;
                 }
-                oper2 *= oper1;
+                r = oper1 * oper2;
             }
 
             else {
-                if (!isDouble) {
+                if (!isInt) {
                     oper1 = 0;
                 }
 
-
                 if (operation.Equals("+")) {
-                    oper2 += oper1;
+                    r = oper2 + oper1;
                 }
 
                 else if (operation.Equals("-")) {
-                    oper2 = oper1 - oper2;
+                    r = oper1 - oper2;
                 }
             }
-
-            calOperat = oper2.ToString();
+            calOperat = r.ToString();
+            textOper = r.ToString();
         }
 
         private void plusbtn_Click(object sender, EventArgs e) {
             operationBtn_click();
             textBox.Text = "";
-            operation += "+";
+            operation = "+";
         }
 
         private void btn1_Click(object sender, EventArgs e){
@@ -114,20 +115,20 @@ namespace Interfaces_grafiques.views {
 
         private void eqbtn_Click(object sender, EventArgs e){
             operationBtn_click();
-            textBox.Text = calOperat;
+            textBox.Text = textOper;
             operation = "";
         }
 
         private void subbtn_Click(object sender, EventArgs e){
             operationBtn_click();
             textBox.Text = "";
-            operation += "-";
+            operation = "-";
         }
 
         private void multipbtn_Click(object sender, EventArgs e) {
             operationBtn_click();
             textBox.Text = "";
-            operation += "x";
+            operation = "x";
         }
 
 
